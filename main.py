@@ -1,5 +1,9 @@
+import os
 import customtkinter as ctk
 from PIL import Image, ImageTk
+
+# Get the directory of the current script
+script_dir = os.path.dirname(os.path.abspath(__file__))
 
 ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
@@ -10,8 +14,11 @@ class ToplevelWindow(ctk.CTkToplevel):
         self.title("Calvo's Cat Curse")
         self.center_window(600, 600)
 
+        # Construct the path to the image in the 'img' folder
+        image_path = os.path.join(script_dir, "img", "calvocat.jpeg")
+
         # Load original image
-        original_image = Image.open(r"D:\PyCharm\Projects\CustomTKinter-LoginGUI\img\calvocat.jpeg")
+        original_image = Image.open(image_path)
 
         # Resize the image
         self.resized_image = original_image.resize((600, 600))
